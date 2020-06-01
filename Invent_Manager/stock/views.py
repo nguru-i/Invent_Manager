@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.apps import apps
 from django.views import generic
 from django.contrib.auth import logout
@@ -6,19 +6,89 @@ from .models import *
 from .forms import *
 
 
+# def home(request):
+#     # model_list = apps.get_app_config('stock').get_models()
+#     model_list = apps.all_models['stock']
+#     context = {'model_list':model_list}
+#     return render(request, 'stock/home.html', context)
+
+
+# def detail(request):
+#     form = ChassisForm()
+#     context = {'form':form}
+#     return render(request, 'stock/detail.html', context)
+
+
+# class IndexView(generic.ListView):
+#     template_name = 'stock/home.html'
 
 def home(request):
-    # model_list = apps.get_app_config('stock').get_models()
-    model_list = apps.all_models['stock']
-    context = {'model_list':model_list}
+    loans = Loan.objects.all()
+    customers = Customer.objects.all()
+
+    total_customers = customers.count()
+
+    total_loans = loans.count()
+    context = {'loans':loans, 'customers':customers,
+	'total_loans':total_loans,
+
+    }
     return render(request, 'stock/home.html', context)
 
 
-def detail(request):
-    form = ChassisForm()
-    context = {'form':form}
-    return render(request, 'stock/detail.html', context)
+def products(request):
+    products = Product.objects.all()
+
+    context = {'products': products}
+    return render(request, 'stock/products.html', context)
 
 
-class IndexView(generic.ListView):
-    template_name = 'stock/home.html'
+def customer(request, pk_test):
+	customer = Customer.objects.get(id=pk_test)
+
+	loans = customer.loan_set.all()
+	loan_count = loans.count()
+
+	context = {'customer':customer, 'loans':loans, 'loan_count':loan_count}
+	return render(request, 'stock/customer.html',context)
+
+
+
+def LoanItemOut(request):
+	form = LoanForm()
+	if request.method == 'POST':
+		#print('Printing POST:', request.POST)
+		form = LoanForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+
+	context = {'form':form}
+	return render(request, 'stock/loan_form.html', context)
+
+
+
+
+
+def updateLoan(request, pk):
+
+	loan = Loan.objects.get(id=pk)
+	form = LoanForm(instance=loan)
+
+	if request.method == 'POST':
+		form = LoanForm(request.POST, instance=loan)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+
+	context = {'form':form}
+	return render(request, 'stock/loan_form.html', context)
+
+def deleteLoan(request, pk):
+	loan = Loan.objects.get(id=pk)
+	if request.method == "POST":
+		loan.delete()
+		return redirect('/')
+
+	context = {'item':loan}
+	return render(request, 'stock/delete.html', context)

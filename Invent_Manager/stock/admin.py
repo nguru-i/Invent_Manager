@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.apps import apps
 from django.contrib.admin.sites import AlreadyRegistered
-from .models import CPU, Chassis, PSU, GPU, Manufacturer
+# from .models import CPU, Chassis, PSU, GPU, Manufacturer
 
 # Register your models here.
 

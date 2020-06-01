@@ -1,9 +1,0 @@
-{% extends "stock/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
-<h1>{{ model }}</h1>
-		  <form action="" method="POST">
-			  {{form|crispy}}
-		  </form>
-		  <input class="btn btn-primary btn-lg" type="submit" value="Submit">
-{% endblock content %}

@@ -1,7 +1,13 @@
 from django.forms import ModelForm
 from .models import *
 
-class ChassisForm(ModelForm):
+class ProductForm(ModelForm):
     class Meta:
-        model = Chassis
+        model = Product
+        fields = '__all__'
+
+
+class LoanForm(ModelForm):
+    class Meta:
+        model = Loan
         fields = '__all__'

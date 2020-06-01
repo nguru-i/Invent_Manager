@@ -1,59 +1,67 @@
 {% extends "stock/base.html" %}
-{% load crispy_forms_tags %}
+
 {% block content %}
-		<h1>Available Directories</h1>
-		
-		  <!-- <ul>
-			{% for model in model_list %}
-			<li class="list-group-item">{{ model }}</li>
-				
-			{% endfor %}
-			</ul> -->
 
-			<div class="dropdown">
-				<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				  Components
-				</a>
-			  
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					{% for model in model_list %}
-					<a class="dropdown-item" href="#">{{ model }}</a>
-				
-			{% endfor %}
-				  
-				  
-				</div>
-			  </div>
+{%  include 'stock/status.html' %}
 
+<br>
 
-<hr>
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Customer</th>
+					<th>Phone</th>
+				</tr>
 
-<!-- Default dropright button -->
-<div class="btn-group dropright">
-	<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		Components
-	</button>
-	<div class="dropdown-menu">
-		{% for model in model_list %}
-		<a class="dropdown-item" href="{% url 'stock:detail' model %} ">{{ model }}</a>
-	
-{% endfor %}
+				{% for customer in customers %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
+						<td>{{customer.name}}</td>
+						<td>{{customer.phone}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
 	</div>
-  </div>
 
-<hr>
+	<div class="col-md-7">
+		<h5>LAST 5 LOANS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_loan' %}">Create Loan</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Loaned</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
 
-{% for model in model_list %}
-		<a class="dropdown-item" href="#">{{ model }}</a>
-		<div class="card" style="width: 18rem;">
-			<img src="..." class="card-img-top" alt="...">
-			<div class="card-body">
-			  <h5 class="card-title">{{ model }}</h5>
-			  <p class="card-text">View, Update or Delete {{model}} data </p>
-			  <a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-		  </div>
-	
-{% endfor %}
+				{% for loan in loans %}
+					<tr>
+						<td>{{loan.product}}</td>
+						<td>{{loan.date_created}}</td>
+						<td>{{loan.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_loan' loan.id %}">Update</a></td>
 
-{% endblock content %}
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_loan' loan.id %}">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
