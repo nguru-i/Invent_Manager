@@ -1,0 +1,577 @@
+[
+{
+  "model": "stock.customer",
+  "pk": 1,
+  "fields": {
+    "name": "Jon Dope",
+    "phone": "07739 242854",
+    "email": "j.dope@email.com",
+    "date_created": "2020-06-01T02:44:36.137Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 2,
+  "fields": {
+    "name": "jane dough",
+    "phone": "07987453875",
+    "email": "j.dough@email.com",
+    "date_created": "2020-06-01T02:45:21.271Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 3,
+  "fields": {
+    "name": "Kuame Alexander",
+    "phone": "07918 324633",
+    "email": "Aliquam.nisl@dis.com",
+    "date_created": "2019-08-14T05:05:21.271Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 4,
+  "fields": {
+    "name": "Uriah Curry",
+    "phone": "00247 945785",
+    "email": "dolor.dolor.tempus@estvitaesodales.org",
+    "date_created": "2020-05-19T02:35:21.221Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 5,
+  "fields": {
+    "name": "Allen Ferrell",
+    "phone": "04322 348598",
+    "email": "risus.Donec.egestas@pedesagittisaugue.ca",
+    "date_created": "2021-05-20T11:43:21.171Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 6,
+  "fields": {
+    "name": "Tanek Marks",
+    "phone": "08210 940897",
+    "email": "dictum@ligulatortor.edu",
+    "date_created": "2020-04-27T15:23:21.391Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 7,
+  "fields": {
+    "name": "Madaline Knowles",
+    "phone": "01718 998859",
+    "email": "dolor.quam@nec.ca",
+    "date_created": "2020-02-02T19:16:21.341Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 8,
+  "fields": {
+    "name": "Troy Calhoun",
+    "phone": "02549 156409",
+    "email": "sit.amet.orci@luctusfelis.com",
+    "date_created": "2020-01-26T21:58:21.001Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 9,
+  "fields": {
+    "name": "Shad Bender",
+    "phone": "00576 625341",
+    "email": "congue.In@netusetmalesuada.org",
+    "date_created": "2019-08-11T17:50:21.131Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 10,
+  "fields": {
+    "name": "Kyra Castro",
+    "phone": "00613 825632",
+    "email": "Proin@dignissimMaecenas.net",
+    "date_created": "2020-01-19T20:50:21.001Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 11,
+  "fields": {
+    "name": "Carlos Riley",
+    "phone": "05256 746186",
+    "email": "eleifend@maurisblandit.com",
+    "date_created": "2020-07-21T13:15:21.131Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 12,
+  "fields": {
+    "name": "Hashim Sawyer",
+    "phone": "07350 235498",
+    "email": "posuere@erat.edu",
+    "date_created": "2020-08-28T13:11:21.221Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 13,
+  "fields": {
+    "name": "Jenna Spence",
+    "phone": "03994 458228",
+    "email": "Cras.dolor.dolor@tempusrisus.edu",
+    "date_created": "2019-06-18T12:38:21.531Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 14,
+  "fields": {
+    "name": "Wilma Heath",
+    "phone": "09783 534173",
+    "email": "enim.diam.vel@NuncmaurisMorbi.org",
+    "date_created": "2020-01-19T02:22:21.241Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 15,
+  "fields": {
+    "name": "Addison Townsend",
+    "phone": "01021 774175",
+    "email": "euismod.est@etrutrumnon.net",
+    "date_created": "2020-08-04T06:01:21.491Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 16,
+  "fields": {
+    "name": "Maile Marshall",
+    "phone": "08815 623209",
+    "email": "Pellentesque.ultricies.dignissim@arcueu.ca",
+    "date_created": "2021-04-27T14:46:21.021Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 17,
+  "fields": {
+    "name": "Maggie Hill",
+    "phone": "00729 496057",
+    "email": "Fusce@arcuac.net",
+    "date_created": "2020-04-18T21:28:21.231Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 18,
+  "fields": {
+    "name": "Libby Powers",
+    "phone": "01384 720805",
+    "email": "egestas.a@Crasvehicula.ca",
+    "date_created": "2020-11-01T23:11:21.071Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 19,
+  "fields": {
+    "name": "Pandora Saunders",
+    "phone": "00647 642970",
+    "email": "lobortis.quam.a@ridiculusmusDonec.net",
+    "date_created": "2020-07-02T02:21:21.221Z"
+  }
+},
+{
+  "model": "stock.customer",
+  "pk": 20,
+  "fields": {
+    "name": "Brandon Kim",
+    "phone": "07447 445676",
+    "email": "Vestibulum@mollisnec.edu",
+    "date_created": "2019-10-31T05:54:21.071Z"
+  }
+},
+{
+ "model": "stock.product",
+ "pk": 1,
+ "fields": {
+  "name": "BenQ Monitor",
+  "price": "149.99",
+  "category": "Monitor",
+  "description": "27\" 2K monitor with blue light filter and all",
+  "date_created": "2020-06-01T02:46:15.062Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 2,
+ "fields": {
+  "name": "OnePlus 8",
+  "price": "749.49",
+  "category": "Chassis",
+  "description": "this is  not a chassis",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 3,
+ "fields": {
+  "name": "Lincoln",
+    "price": "9.16",
+    "category": "Chassis",
+    "description": "ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 4,
+ "fields": {
+  "name": "Kenworth",
+    "price": "0.16",
+    "category": "Monitor",
+    "description": "congue a, aliquet vel, vulputate eu, odio. Phasellus at augue",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 5,
+ "fields": {
+  "name": "Daihatsu",
+    "price": "5.27",
+    "category": "Memory",
+    "description": "tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi.",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 6,
+ "fields": {
+  "name": "Volvo",
+    "price": "8.50",
+    "category": "Motherboard",
+    "description": "Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 7,
+ "fields": {
+  "name": "Mitsubishi Motors",
+    "price": "8.49",
+    "category": "Hard_Drive",
+    "description": "mauris blandit mattis. Cras eget nisi dictum augue malesuada malesuada.",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 8,
+ "fields": {
+  "name": "FAW",
+    "price": "4.84",
+    "category": "Chassis",
+    "description": "velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus.",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 9,
+ "fields": {
+  "name": "Buick",
+    "price": "5.08",
+    "category": "CPU",
+    "description": "sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales.",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 10,
+ "fields": {
+ "name": "Seat",
+    "price": "7.08",
+    "category": "Motherboard",
+    "description": "Duis ac arcu. Nunc mauris. Morbi non sapien molestie orci",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 11,
+ "fields": {
+  "name": "Audi",
+    "price": "3.43",
+    "category": "CPU",
+    "description": "Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 12,
+ "fields": {
+  "name": "Jeep",
+    "price": "5.14",
+    "category": "Monitor",
+    "description": "non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 13,
+ "fields": {
+  "name": "Chrysler",
+    "price": "8.68",
+    "category": "CPU",
+    "description": "est, vitae sodales nisi magna sed dui. Fusce aliquam, enim",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 14,
+ "fields": {
+  "name": "Honda",
+    "price": "1.44",
+    "category": "Hard_Drive",
+    "description": "egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla",
+  "date_created": "2020-06-01T03:45:03.658Z"
+ }
+},
+{
+ "model": "stock.product",
+ "pk": 15,
+ "fields": {
+  "name": "Nvidia GTX 960",
+  "price": "250.00",
+  "category": "GPU",
+  "description": "Nvidia card",
+  "date_created": "2020-06-01T17:16:25.786Z"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 1,
+ "fields": {
+  "customer": 1,
+  "product": 1,
+  "loaned_on": "2020-06-01",
+  "status": "Pending"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 2,
+ "fields": {
+  "customer": 17,
+  "product": 2,
+  "loaned_on": "2020-06-01",
+  "status": "Pending"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 3,
+ "fields": {
+  "customer": 16,
+    "product": 2,
+    "loaned_on": "2019-12-11",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 4,
+ "fields": {
+  "customer": 14,
+    "product": 5,
+    "loaned_on": "2020-02-23",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 5,
+ "fields": {
+  "customer": 12,
+    "product": 13,
+    "loaned_on": "2019-05-15",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 6,
+ "fields": {
+  "customer": 11,
+    "product": 1,
+    "loaned_on": "2020-03-06",
+    "status": "Out on Loan"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 7,
+ "fields": {
+  "customer": 18,
+    "product": 2,
+    "loaned_on": "2019-09-01",
+    "status": "Pending"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 8,
+ "fields": {
+  "customer": 11,
+    "product": 2,
+    "loaned_on": "2019-10-26",
+    "status": "Out on Loan"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 9,
+ "fields": {
+ "customer": 7,
+    "product": 14,
+    "loaned_on": "2020-04-28",
+    "status": "Pending"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 10,
+ "fields": {
+  "customer": 10,
+    "product": 3,
+    "loaned_on": "2020-03-26",
+    "status": "Out on Loan"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 11,
+ "fields": {
+  "customer": 3,
+    "product": 1,
+    "loaned_on": "2019-02-15",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 12,
+ "fields": {
+  "customer": 1,
+    "product": 5,
+    "loaned_on": "2020-05-14",
+    "status": "Out on Loan"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 13,
+ "fields": {
+ "customer": 12,
+    "product": 9,
+    "loaned_on": "2019-03-11",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 14,
+ "fields": {
+  "customer": 2,
+  "product": 2,
+  "loaned_on": "2020-06-01",
+  "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 15,
+ "fields": {
+  "customer": 20,
+    "product": 14,
+    "loaned_on": "2019-04-28",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 16,
+ "fields": {
+  "customer": 1,
+    "product": 4,
+    "loaned_on": "2019-04-25",
+    "status": "Out on Loan"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 17,
+ "fields": {
+  "customer": 15,
+    "product": 15,
+    "loaned_on": "2019-11-02",
+    "status": "Pending"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 18,
+ "fields": {
+  "customer": 5,
+    "product": 10,
+    "loaned_on": "2020-02-20",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 19,
+ "fields": {
+  "customer": 18,
+    "product": 13,
+    "loaned_on": "2019-05-17",
+    "status": "Pending"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 20,
+ "fields": {
+  "customer": 2,
+    "product": 7,
+    "loaned_on": "2019-08-10",
+    "status": "Returned"
+ }
+},
+{
+ "model": "stock.loan",
+ "pk": 21,
+ "fields": {
+  "customer": 12,
+    "product": 6,
+    "loaned_on": "2019-05-09",
+    "status": "Returned"
+ }
+}
+]

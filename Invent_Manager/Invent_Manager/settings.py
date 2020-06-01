@@ -128,3 +128,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'stock-home'
 
 LOGIN_URL = 'login'
+
+FIXTURE_DIRS = (
+   '/stock/fixtures/',
+)

@@ -37,8 +37,9 @@ def customer(request, pk):
 
 
 
-def LoanItemOut(request):
-	form = LoanForm()
+def LoanItemOut(request, pk):
+	customer = Customer.objects.get(id=pk)
+	form = LoanForm(initial={'customer': customer})
 	if request.method == 'POST':
 		# print('Printing POST:', request.POST)
 		form = LoanForm(request.POST)
