@@ -97,12 +97,4 @@ class Loan(models.Model):
     status = models.CharField(max_length=200, null=True, choices=STATUS)
 
     def __str__(self):
-        return f'Loan ID {self.pk} '
-
-
-
-class Supplying(models.Model):
-    supplier_id = models.ForeignKey(Supplier, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(blank=True)
-    
+        return self.product.name
