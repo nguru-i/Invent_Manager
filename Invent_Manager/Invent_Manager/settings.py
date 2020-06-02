@@ -32,8 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
+    'el_pagination',
     'stock.apps.StockConfig',
-    # 'reporting',
+    'django_filters',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -132,3 +133,7 @@ LOGIN_URL = 'login'
 FIXTURE_DIRS = (
    '/stock/fixtures/',
 )
+
+EL_PAGINATION_PER_PAGE = 6
+
+EL_PAGINATION_ORPHANS = 3

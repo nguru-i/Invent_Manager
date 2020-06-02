@@ -1,8 +1,9 @@
 {%  extends 'stock/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-	<br>
+<br>
 
 <div class="row">
 	<div class="col-md">
@@ -39,12 +40,13 @@
 	<div class="col">
 		<div class="card card-body">
 			<form method="get">
+				{{myFilter.form}}
 
-		    <button class="btn btn-primary" type="submit">Search</button>
-		  </form>
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
 		</div>
 	</div>
-	
+
 </div>
 <br>
 
@@ -61,12 +63,12 @@
 					<th>Remove</th>
 				</tr>
 
-				{% for loan in loans %}
+				{% for loan in page_obj %}
 
 				<tr>
 					<td>{{loan.product}}</td>
 					<td>{{loan.product.category}}</td>
-					<td>{{loan.date_created}}</td>
+					<td>{{loan.loaned_on}}</td>
 					<td>{{loan.status}}</td>
 					<td><a class="btn btn-sm btn-info" href="{% url 'update_loan' loan.id %}">Update</a></td>
 
@@ -75,6 +77,28 @@
 				{% endfor %}
 
 			</table>
+		</div>
+		<div class="pagination">
+			<span class="step-links">
+				<ul class="pagination">
+					{% if page_obj.has_previous %}
+					<li><a class="page-link" href="?page=1">&laquo; </a></li>
+					<li><a class="page-link"
+							href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+					</li>
+					{% endif %}
+
+
+					<li class="page-item active" aria-current="page">
+						<a class="page-link" href="#">{{ page_obj.number }} <span class="sr-only">(current)</span></a>
+					</li>
+					{% if page_obj.has_next %}
+					<li><a class="page-link"
+							href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+					<li><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}"> &raquo;</a></li>
+					{% endif %}
+				</ul>
+			</span>
 		</div>
 	</div>
 </div>

@@ -11,7 +11,7 @@
 			<p>Are you sure you want to delete "{{item}}"?</p>
 
 			<form action="{% url 'delete_loan' item.id  %}" method="POST">
-				
+
 				{% csrf_token %}
 				<a class="btn btn-warning" href="{% url 'stock-home' %}">Cancel</a>
 

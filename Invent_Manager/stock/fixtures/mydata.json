@@ -371,7 +371,7 @@
   "customer": 1,
   "product": 1,
   "loaned_on": "2020-06-01",
-  "status": "Pending"
+  "status": "Out on loan"
  }
 },
 {
@@ -381,7 +381,7 @@
   "customer": 17,
   "product": 2,
   "loaned_on": "2020-06-01",
-  "status": "Pending"
+  "status": "Out on loan"
  }
 },
 {
@@ -421,7 +421,7 @@
   "customer": 11,
     "product": 1,
     "loaned_on": "2020-03-06",
-    "status": "Out on Loan"
+    "status": "Out on loan"
  }
 },
 {
@@ -431,7 +431,7 @@
   "customer": 18,
     "product": 2,
     "loaned_on": "2019-09-01",
-    "status": "Pending"
+    "status": "Out on loan"
  }
 },
 {
@@ -441,7 +441,7 @@
   "customer": 11,
     "product": 2,
     "loaned_on": "2019-10-26",
-    "status": "Out on Loan"
+    "status": "Out on loan"
  }
 },
 {
@@ -451,7 +451,7 @@
  "customer": 7,
     "product": 14,
     "loaned_on": "2020-04-28",
-    "status": "Pending"
+    "status": "Out on loan"
  }
 },
 {
@@ -461,7 +461,7 @@
   "customer": 10,
     "product": 3,
     "loaned_on": "2020-03-26",
-    "status": "Out on Loan"
+    "status": "Out on loan"
  }
 },
 {
@@ -481,7 +481,7 @@
   "customer": 1,
     "product": 5,
     "loaned_on": "2020-05-14",
-    "status": "Out on Loan"
+    "status": "Out on loan"
  }
 },
 {
@@ -521,7 +521,7 @@
   "customer": 1,
     "product": 4,
     "loaned_on": "2019-04-25",
-    "status": "Out on Loan"
+    "status": "Out on loan"
  }
 },
 {
@@ -531,7 +531,7 @@
   "customer": 15,
     "product": 15,
     "loaned_on": "2019-11-02",
-    "status": "Pending"
+    "status": "Out on loan"
  }
 },
 {
@@ -551,7 +551,7 @@
   "customer": 18,
     "product": 13,
     "loaned_on": "2019-05-17",
-    "status": "Pending"
+    "status": "Out on loan"
  }
 },
 {
