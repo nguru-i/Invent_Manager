@@ -92,11 +92,13 @@ def home(request):
     myFilter = LoanFilter(request.GET, queryset=loans)
     loans = myFilter.qs
 
+    myCustFilter = CustomerFilter(request.GET, queryset=customers)
+    customers = myCustFilter.qs
     
 
     context = {'loans': loans, 'customers': customers,
                'total_loans': total_loans, 'out_on_loan': out_on_loan, 'out_on_loan_price': out_on_loan_price,
-               'myFilter': myFilter
+               'myFilter': myFilter, 'myCustFilter': myCustFilter
                }
     return render(request, 'stock/home.html', context)
 

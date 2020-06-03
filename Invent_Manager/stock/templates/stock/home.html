@@ -10,10 +10,26 @@
 <div class="row">
 	<div class="col-md-5">
 		<h5>CUSTOMERS:</h5>
+		
+		
 		<hr>
 		<div class="card card-body">
+
+			<div class="input-group mb-3">
+				<form method="get" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+					{{myCustFilter.form}}
+	
+					<!-- <button class="btn btn-primary" type="submit">Search</button> -->
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+					  </div>
+				</form>
+	
+				
+			  </div>
+
 			<!-- check   this -->
-			<a class="btn btn-primary  btn-sm btn-block" href="#">Create Customer</a>
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="#">Create Customer</a> -->
 			<!--  -->
 			<table class="table table-sm">
 				<tr>
