@@ -33,7 +33,7 @@ def register(request):
 
 
 @unauthenticated_user
-def login(request):
+def loginPage(request):
     if request.method == 'POST':
         
         username = request.POST.get('username')
@@ -42,10 +42,10 @@ def login(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request)
+            login(request, user)
             return redirect('stock-home')
         else:
-            messages.info(request, 'Username OR password is incorrect')
+            messages.info(request, 'Please enter correct credentials')
 
     context = {}
     return render(request, 'stock/login.html', context)
@@ -56,8 +56,8 @@ def userPage(request):
     return render(request, 'stock/user.html', context)
 
 
-def logout(request):
-	logout(request)
+def logoutPage(request):
+	logoutPage(request)
 	return redirect('login')
 
 
