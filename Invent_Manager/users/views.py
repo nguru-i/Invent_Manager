@@ -9,7 +9,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created. You can now use it to log in.')
+            messages.success(request, f'{username}, your account has been created. You can now use it to log in.')
             return redirect('login')
     else:
         form = UserRegistrationForm()
@@ -20,3 +20,6 @@ def register(request):
 def profile(request):
     return render (request, 'users/profile.html')
 
+def userPage(request):
+    context = {}
+    return render(request, 'users/user.html', context)
