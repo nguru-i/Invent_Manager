@@ -16,7 +16,8 @@ class Supplier(models.Model):
 
 
 class Customer(models.Model):
-    
+    # TODO relate customer to built in User model
+    user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.EmailField()

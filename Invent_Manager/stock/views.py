@@ -15,6 +15,7 @@ from .forms import *
 from .filters import *
 from.decorators import *
 
+
 @unauthenticated_user
 def register(request):
     if request.method == 'POST':
@@ -24,6 +25,9 @@ def register(request):
             username = form.cleaned_data.get('username')
             group = Group.objects.get(name='customer')
             user.groups.add(group)
+            Customer.objects.create(user=user,
+            	name=user.username,
+            	)
             messages.success(
                 request, f'{username}, your account has been created. You can now use it to log in.')
             return redirect('login')
@@ -35,7 +39,7 @@ def register(request):
 @unauthenticated_user
 def loginPage(request):
     if request.method == 'POST':
-        
+
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -51,14 +55,26 @@ def loginPage(request):
     return render(request, 'stock/login.html', context)
 
 
-def userPage(request):
-    context = {}
-    return render(request, 'stock/user.html', context)
-
-
 def logoutPage(request):
 	logoutPage(request)
 	return redirect('login')
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['customer'])
+def userPage(request):
+    loans = request.user.customer.loan_set.all()
+    total_loans = loans.count()
+    out_on_loan = loans.filter(status='Out on loan').count()
+    paginator = Paginator(loans, 6)
+    
+    price = loans.select_related('product').filter(status='Out on loan').aggregate(sum=Sum('product__price'))
+
+    out_on_loan_price = round(price.get('sum'), 2)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {'out_on_loan': out_on_loan, 'total_loans': total_loans, 'page_obj': page_obj, 
+    'out_on_loan_price': out_on_loan_price}
+    return render(request, 'stock/user.html', context)
 
 
 

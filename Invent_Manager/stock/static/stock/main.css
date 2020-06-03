@@ -5,16 +5,20 @@ body {
 }
 
 #total-loans{
-  background: #fcfffd;
+background-color: #4cb4c7;
 }
 
 #loans-pending{
-  background: #fcfffd;
+background-color: #7abecc;
 }
 
 #total-cost-of-loans{
-  background: #fcfffd;
+background-color: #7CD1C0;
 }
+
+
+
+
 
 /* h1, h2, h3, h4, h5, h6 {
   color: #5d735d;
