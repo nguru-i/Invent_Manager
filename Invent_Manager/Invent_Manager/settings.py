@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
     'el_pagination',
     'stock.apps.StockConfig',
     'django_filters',
@@ -127,6 +126,8 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'stock-home'
+
+LOGOUT_REDIRECT_URL = 'login'
 
 LOGIN_URL = 'login'
 

@@ -1,0 +1,50 @@
+{% extends "stock/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <img src="{% static 'stock/images/logo.png' %}" id="icon" alt="InventManager Icon" />
+      </div>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+        <input type="text" id="login" class="fadeIn third" name="first_name" placeholder="First Name">
+        <input type="text" id="login" class="fadeIn fourth" name="last_name" placeholder="Last Name">
+        <input type="text" id="login" class="fadeIn fifth" name="email" placeholder="Email">
+        <input type="password" id="password" class="fadeIn sixth" name="password1" placeholder="Password">
+        <input type="password" id="password" class="fadeIn seventh" name="password2"
+          placeholder="Password confirmation">
+        <input type="submit" class="fadeIn eighth" value="Sign up">
+        {% for message in messages %}
+        <p id="messages">{{message}}</p>
+        {% endfor %}
+      </form>
+      <div id="formFooter">
+        <small class="text-muted">
+          Do you need an account? <a class="underlineHover" href="{% url 'register' %}">Sign up now.</a>
+        </small>
+      </div>
+    </div>
+  </div>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Already have an account? <a class="ml-2" href="{% url 'login' %}">Log In</a>
+    </small>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Register User.</legend>
+      {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Sign Up</button>
+    </div>
+  </form> -->

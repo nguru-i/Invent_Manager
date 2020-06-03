@@ -1,0 +1,52 @@
+{% extends "stock/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+
+
+
+
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+      
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="{% static 'stock/images/logo.png' %}" id="icon" alt="InventManager Icon" />
+          </div>
+      
+          <!-- Login Form -->
+          <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Login">
+            {% for message in messages %}
+    <p id="messages">{{message}}</p>
+    {% endfor %}
+          </form>
+      
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <small class="text-muted">
+                Do you need an account? <a class="underlineHover" href="{% url 'register' %}">Sign up now.</a>
+            </small>
+            
+          </div>
+      
+        </div>
+      </div>
+
+
+  <!--   {% for message in messages %}
+    <p id="messages">{{message}}</p>
+    {% endfor %}
+ -->
+    <!-- <div class="border-top pt-3">
+        <small class="text-muted">
+            Do you need an account? <a class="ml-2" href="{% url 'register' %}">Sign up now.</a>
+        </small>
+    </div> -->
+</div>
+{% endblock content %}
