@@ -1,14 +1,69 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .forms import UserRegistrationForm
+from django.contrib.auth.models import Group
 from django.apps import apps
+from django.contrib.auth import authenticate, login, logout
 from django.views import generic
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
 from django.db.models import Sum, Count
 from .models import *
 from .forms import *
 from .filters import *
+from.decorators import *
+
+@unauthenticated_user
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='customer')
+            user.groups.add(group)
+            messages.success(
+                request, f'{username}, your account has been created. You can now use it to log in.')
+            return redirect('login')
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'stock/register.html', {'form': form})
 
 
+@unauthenticated_user
+def login(request):
+    if request.method == 'POST':
+        
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request)
+            return redirect('stock-home')
+        else:
+            messages.info(request, 'Username OR password is incorrect')
+
+    context = {}
+    return render(request, 'stock/login.html', context)
+
+
+def userPage(request):
+    context = {}
+    return render(request, 'stock/user.html', context)
+
+
+def logout(request):
+	logout(request)
+	return redirect('login')
+
+
+
+@login_required(login_url='login')
+@admin_only
 def home(request):
     loans = Loan.objects.all()
     customers = Customer.objects.all()
@@ -30,6 +85,8 @@ def home(request):
     return render(request, 'stock/home.html', context)
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def products(request):
     products = Product.objects.all()
 
@@ -46,6 +103,8 @@ def products(request):
     return render(request, 'stock/products.html', context)
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
 
@@ -64,6 +123,8 @@ def customer(request, pk):
     return render(request, 'stock/customer.html', context)
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def LoanItemOut(request, pk):
     customer = Customer.objects.get(id=pk)
     form = LoanForm(initial={'customer': customer})
@@ -78,6 +139,8 @@ def LoanItemOut(request, pk):
     return render(request, 'stock/loan_form.html', context)
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def updateLoan(request, pk):
 
     loan = Loan.objects.get(id=pk)
@@ -93,6 +156,8 @@ def updateLoan(request, pk):
     return render(request, 'stock/loan_form.html', context)
 
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def deleteLoan(request, pk):
     loan = Loan.objects.get(id=pk)
     if request.method == "POST":
@@ -101,3 +166,5 @@ def deleteLoan(request, pk):
 
     context = {'item': loan}
     return render(request, 'stock/delete.html', context)
+
+
