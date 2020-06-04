@@ -21,13 +21,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    
-
-    
-    path('logout/', auth_views.LogoutView.as_view(template_name="stock/logout.html"), name="logout"),
-
-
     path('', include('stock.urls')),
 
 ]

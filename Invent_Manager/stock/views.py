@@ -23,16 +23,21 @@ def register(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            email =  form.cleaned_data.get('email')
             group = Group.objects.get(name='customer')
             user.groups.add(group)
             Customer.objects.create(user=user,
-            	name=user.username,
+            	name=f'{user.first_name}  {user.last_name}',
+                email = email
+            	#TODO send email and names to customer table
             	)
             messages.success(
                 request, f'{username}, your account has been created. You can now use it to log in.')
             return redirect('login')
     else:
-        form = UserRegistrationForm()
+        form = UserRegistrationForm(request.GET)
     return render(request, 'stock/register.html', {'form': form})
 
 
@@ -49,27 +54,32 @@ def loginPage(request):
             login(request, user)
             return redirect('stock-home')
         else:
+            
             messages.info(request, 'Please enter correct credentials')
 
     context = {}
     return render(request, 'stock/login.html', context)
 
-
+@login_required
 def logoutPage(request):
-	logoutPage(request)
+	logout(request)
 	return redirect('login')
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['customer'])
 def userPage(request):
     loans = request.user.customer.loan_set.all()
+    print(loans)
     total_loans = loans.count()
     out_on_loan = loans.filter(status='Out on loan').count()
     paginator = Paginator(loans, 6)
     
-    price = loans.select_related('product').filter(status='Out on loan').aggregate(sum=Sum('product__price'))
+    out_on_loan_items = loans.filter(status='Out on loan')  
+    price = 0
+    for out_on_loan_item in out_on_loan_items:
+        price += out_on_loan_item.product.price
 
-    out_on_loan_price = round(price.get('sum'), 2)
+    out_on_loan_price = price
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {'out_on_loan': out_on_loan, 'total_loans': total_loans, 'page_obj': page_obj, 
@@ -81,12 +91,19 @@ def userPage(request):
 @login_required(login_url='login')
 @admin_only
 def home(request):
-    loans = Loan.objects.all()
-    customers = Customer.objects.all()
+    loans = Loan.objects.all().order_by('id')
+    customers = Customer.objects.all().order_by('id')
     total_customers = customers.count()
     total_loans = loans.count()
-    price = Loan.objects.select_related('product').filter(status='Out on loan').aggregate(sum=Sum('product__price'))
-    out_on_loan_price = round(price.get('sum'), 2)
+    
+
+    out_on_loan_items = loans.filter(status='Out on loan')  
+    price = 0
+    for out_on_loan_item in out_on_loan_items:
+        price += out_on_loan_item.product.price
+
+    out_on_loan_price = price
+
     out_on_loan = loans.filter(status='Out on loan').count()
 
     myFilter = LoanFilter(request.GET, queryset=loans)
@@ -133,9 +150,9 @@ def customer(request, pk):
     loans = myFilter.qs
 
     paginator = Paginator(loans, 10)
-
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
     context = {'customer': customer, 'loans': loans, 'loan_count': loan_count,
                'myFilter': myFilter, 'page_obj': page_obj}
     return render(request, 'stock/customer.html', context)
@@ -155,6 +172,23 @@ def LoanItemOut(request, pk):
 
     context = {'form': form}
     return render(request, 'stock/loan_form.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
+def updateCustomer(request, pk):
+
+    customer = Customer.objects.get(id=pk)
+    form = CustomerForm(instance=customer)
+
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('customer', pk)
+
+    context = {'form': form}
+    return render(request, 'stock/customer_form.html', context)
 
 
 @login_required(login_url='login')

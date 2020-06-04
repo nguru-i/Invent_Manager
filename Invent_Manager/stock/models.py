@@ -91,10 +91,12 @@ class Loan(models.Model):
         Customer, null=True, on_delete=models.SET_NULL)
     product = models.ForeignKey(Product,  null=True, on_delete=models.SET_NULL)
     loaned_on = models.DateField('item sent out on', auto_now_add=True)
+    # TODO 
+    due_back = models.DateField('item due back on',null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
 
     def __str__(self):
         return self.product.name
 
     class Meta:
-        ordering = ['-loaned_on']
+        ordering = ['due_back']
