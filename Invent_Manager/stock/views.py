@@ -31,7 +31,6 @@ def register(request):
             Customer.objects.create(user=user,
             	name=f'{user.first_name}  {user.last_name}',
                 email = email
-
             	)
             messages.success(
                 request, f'{username}, your account has been created. You can now use it to log in.')
