@@ -15,6 +15,7 @@ class LoanForm(ModelForm):
     class Meta:
         model = Loan
         fields = '__all__'
+        
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -28,5 +29,13 @@ class UserRegistrationForm(UserCreationForm):
                   'email', 'password1', 'password2']
 
 
+class CustomerForm(ModelForm):
+    class Meta:
+        model = Customer
+        fields = '__all__'
+        exclude = ['user']
 
 
+class UpdateLoanStatusForm(ModelForm):
+    model = Loan
+    fields = ['status']

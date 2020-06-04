@@ -1,0 +1,9 @@
+[{"model": "stock.customer", "pk": 1, "fields": {"user": 3, "name": "DavisNguru", "phone": "65475786", "email": "ngru@email.com", "date_created": "2020-06-04T19:13:31.831Z"}}, 
+{"model": "stock.product", "pk": 1, "fields": {"name": "BenQ Monitor", "price": "149.99", "category": "Monitor", "description": "27\" 2K monitor with blue light filter and all", "date_created": "2020-06-01T02:46:15.062Z"}},
+ {"model": "stock.product", "pk": 2, "fields": {"name": "OnePlus 8", "price": "749.49", "category": "Chassis", "description": "this is  not a chassis", "date_created": "2020-06-01T03:45:03.658Z"}},
+  {"model": "stock.product", "pk": 3, "fields": {"name": "AlienWare Gaming PC", "price": "299.99", "category": "Chassis", "description": " Maecenas iaculis aliquet diam. Sed diam lorem, auctor", "date_created": "2020-06-01T03:45:03.658Z"}},
+  {"model": "stock.product", "pk": 4, "fields": {"name": "Corsair Freeza", "price": "35.20", "category": "Memory", "description": "tempus eu, ligula.", "date_created": "2020-06-01T03:45:03.658Z"}}, 
+  {"model": "stock.loan", "pk": 1, "fields": {"customer": 1, "product": 1, "loaned_on": "2019-06-01", "due_back": "2020-06-01", "status": "Out on loan"}},
+   {"model": "stock.loan", "pk": 2, "fields": {"customer": 1, "product": 2, "loaned_on": "2020-04-01", "due_back": "2020-10-11", "status": "Out on loan"}},
+   {"model": "stock.loan", "pk": 3, "fields": {"customer": 1, "product": 1, "loaned_on": "2019-12-11", "due_back": "2021-08-01", "status": "Returned"}},
+  {"model": "stock.loan", "pk": 4, "fields": {"customer": 1, "product": 1, "loaned_on": "2020-06-04", "due_back": "2020-06-15", "status": "Out on loan"}}]

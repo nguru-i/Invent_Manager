@@ -13,7 +13,9 @@
 					<th>Product</th>
 					<th>Category</th>
 					<th>Date Loaned</th>
+					<th>Due Date</th>
 					<th>Status</th>
+					<th>Cost</th>
 					
 				</tr>
 
@@ -23,7 +25,9 @@
 					<td>{{loan.product}}</td>
 					<td>{{loan.product.category}}</td>
 					<td>{{loan.loaned_on}}</td>
+					<td>{{loan.due_back}}</td>
 					<td>{{loan.status}}</td>
+					<td>{{loan.product.price}}</td>
 					
 				</tr>
 				{% endfor %}

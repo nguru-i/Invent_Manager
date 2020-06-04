@@ -16,7 +16,6 @@ class Supplier(models.Model):
 
 
 class Customer(models.Model):
-    # TODO relate customer to built in User model
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
@@ -91,10 +90,12 @@ class Loan(models.Model):
         Customer, null=True, on_delete=models.SET_NULL)
     product = models.ForeignKey(Product,  null=True, on_delete=models.SET_NULL)
     loaned_on = models.DateField('item sent out on', auto_now_add=True)
+
+    due_back = models.DateField('item due back on',null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
 
     def __str__(self):
         return self.product.name
 
     class Meta:
-        ordering = ['-loaned_on']
+        ordering = ['due_back']

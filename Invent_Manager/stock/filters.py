@@ -6,7 +6,7 @@ class LoanFilter(django_filters.FilterSet):
     class Meta:
         model = Loan
         fields = '__all__'
-        exclude = ['loaned_on']
+        exclude = ['loaned_on','customer']
 
 
 class ProductFilter(django_filters.FilterSet):
