@@ -24,10 +24,12 @@
                     <a class="nav-link" href="{% url 'stock-products' %}">Products</a>
                 </li>
             </ul>
-            {% else %}
+            {% elif user.is_authenticated %}
             <li class="navbar-nav nav-item ">
                 <a class="nav-item nav-link" href="{% url 'user-page' %}">Profile</a>
             </li>
+
+            <!--  -->
             {% endif %}
         </div>
         <div class="navbar-nav ml-auto">

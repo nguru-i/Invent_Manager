@@ -18,21 +18,18 @@
         <input type="password" id="password" class="fadeIn seventh" name="password2"
           placeholder="Password confirmation">
         <input type="submit" class="fadeIn eighth" value="Sign up">
+
         {% for message in messages %}
-        <p id="messages">{{message}}</p>
-        {% endfor %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+
       </form>
       <div id="formFooter">
         <small class="text-muted">
-          Do you need an account? <a class="underlineHover" href="{% url 'register' %}">Sign up now.</a>
+          Already have an account? <a class="underlineHover" href="{% url 'login' %}">Log In</a>
         </small>
       </div>
     </div>
-  </div>
-  <div class="border-top pt-3">
-    <small class="text-muted">
-      Already have an account? <a class="ml-2" href="{% url 'login' %}">Log In</a>
-    </small>
   </div>
 </div>
 

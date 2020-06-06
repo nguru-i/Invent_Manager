@@ -20,6 +20,12 @@ from.decorators import *
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
+        # initial_dict = { 
+        #         "username" : form.username, 
+        #         "first_name" : form.first_name, 
+        #         "last_name":form.last_name, 
+        #         "email":form.email
+        #     } 
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
@@ -32,11 +38,19 @@ def register(request):
             	name=f'{user.first_name}  {user.last_name}',
                 email = email
             	)
+
+            
+
             messages.success(
                 request, f'{username}, your account has been created. You can now use it to log in.')
             return redirect('login')
+        else:
+            messages.error(request, 'The details you entered no not meet the minimum requirements')
+
+
     else:
-        form = UserRegistrationForm(request.GET)
+
+        form = UserRegistrationForm()
     return render(request, 'stock/register.html', {'form': form})
 
 
@@ -54,7 +68,7 @@ def loginPage(request):
             return redirect('stock-home')
         else:
             
-            messages.info(request, 'Please enter correct credentials')
+            messages.error(request, 'Please enter correct credentials')
 
     context = {}
     return render(request, 'stock/login.html', context)
