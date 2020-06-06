@@ -10,18 +10,18 @@
       </div>
       <form method="POST" action="">
         {% csrf_token %}
-        <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
-        <input type="text" id="login" class="fadeIn third" name="first_name" placeholder="First Name">
-        <input type="text" id="login" class="fadeIn fourth" name="last_name" placeholder="Last Name">
-        <input type="text" id="login" class="fadeIn fifth" name="email" placeholder="Email">
-        <input type="password" id="password" class="fadeIn sixth" name="password1" placeholder="Password">
-        <input type="password" id="password" class="fadeIn seventh" name="password2"
+        <input type="text" id="login" class="fadeIn second required" name="username" placeholder="Username">
+        <input type="text" id="login" class="fadeIn third required" name="first_name" placeholder="First Name">
+        <input type="text" id="login" class="fadeIn fourth required" name="last_name" placeholder="Last Name">
+        <input type="text" id="login" class="fadeIn fifth required" name="email" placeholder="Email">
+        <input type="password" id="password" class="fadeIn sixth required" name="password1" placeholder="Password">
+        <input type="password" id="password" class="fadeIn seventh required" name="password2"
           placeholder="Password confirmation">
-        <input type="submit" class="fadeIn eighth" value="Sign up">
+        <input type="submit" class="fadeIn eighth required" value="Sign up">
 
         {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
 
       </form>
       <div id="formFooter">

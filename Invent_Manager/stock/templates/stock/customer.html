@@ -63,6 +63,7 @@
 					<th>Due back on</th>
 					<th>Update</th>
 					<th>Remove</th>
+
 				</tr>
 
 				{% for loan in page_obj %}
@@ -77,6 +78,7 @@
 
 					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_loan' loan.id %}">Delete</a></td>
 				</tr>
+				
 				{% endfor %}
 
 			</table>

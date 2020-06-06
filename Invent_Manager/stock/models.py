@@ -26,31 +26,9 @@ class Customer(models.Model):
         return self.name
 
 
-class Product(models.Model):
-    CATEGORY = (
-        ('Motherboard', 'Motherboard'),
-        ('CPU', 'CPU'),
-        ('Memory', 'Memory'),
-        ('Hard_Drive', 'Hard Drive'),
-        ('PSU', 'Power Supply Unit'),
-        ('GPU', 'Graphics Card'),
-        ('Chassis', 'Chassis'),
-        ('Monitor', 'Monitor'),
-    )
-
-    name = models.CharField(max_length=200, null=True)
-    price = models.DecimalField(null=True, max_digits=10, decimal_places=2)
-    category = models.CharField(
-        max_length=200, null=True, choices=CATEGORY)
-    description = models.TextField(null=True, blank=True)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
-
-    def __str__(self):
-        return self.name
-
 
 class Stock(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
     supplier = models.ForeignKey(
         Supplier, null=True, on_delete=models.SET_NULL)
     quantity = models.IntegerField(blank=True)
@@ -81,6 +59,57 @@ class Stock(models.Model):
     has_arrived.short_description = 'Supply upto date?'
 
 
+# class Product(models.Model):
+#     CATEGORY = (
+#         ('Motherboard', 'Motherboard'),
+#         ('CPU', 'CPU'),
+#         ('Memory', 'Memory'),
+#         ('Hard_Drive', 'Hard Drive'),
+#         ('PSU', 'Power Supply Unit'),
+#         ('GPU', 'Graphics Card'),
+#         ('Chassis', 'Chassis'),
+#         ('Monitor', 'Monitor'),
+#     )
+
+#     name = models.CharField(max_length=200, null=True)
+#     price = models.DecimalField(null=True, max_digits=10, decimal_places=2)
+#     category = models.CharField(
+#         max_length=200, null=True, choices=CATEGORY)
+#     description = models.TextField(null=True, blank=True)
+#     date_created = models.DateTimeField(auto_now_add=True, null=True)
+#     # stock = models.ForeignKey(Stock, on_delete=models.CASCADE, null=True)
+
+#     def __str__(self):
+#         return self.name
+
+
+class Product(models.Model):
+    CATEGORY = (
+        ('Motherboard', 'Motherboard'),
+        ('CPU', 'CPU'),
+        ('Memory', 'Memory'),
+        ('Hard_Drive', 'Hard Drive'),
+        ('PSU', 'Power Supply Unit'),
+        ('GPU', 'Graphics Card'),
+        ('Chassis', 'Chassis'),
+        ('Monitor', 'Monitor'),
+    )
+
+    name = models.CharField(max_length=200, null=True)
+    price = models.DecimalField(null=True, max_digits=10, decimal_places=2)
+    category = models.CharField(
+        max_length=200, null=True, choices=CATEGORY)
+    description = models.TextField(null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    supplier = models.ForeignKey(
+        Supplier, null=True, on_delete=models.SET_NULL)
+    quantity = models.IntegerField(blank=True)
+    # stock = models.ForeignKey(Stock, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Loan(models.Model):
     STATUS = (
         ('Out on loan', 'Out on loan'),
@@ -98,3 +127,4 @@ class Loan(models.Model):
 
     class Meta:
         ordering = ['due_back']
+

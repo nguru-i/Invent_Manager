@@ -9,9 +9,12 @@ class ProductForm(ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
+        exclude = ['quantity']
+
 
 
 class LoanForm(ModelForm):
+
     class Meta:
         model = Loan
         fields = '__all__'
@@ -19,6 +22,8 @@ class LoanForm(ModelForm):
 
 
 class UserRegistrationForm(UserCreationForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
     email = forms.EmailField()
     first_name = forms.CharField()
     last_name = forms.CharField()

@@ -10,7 +10,7 @@ from django.views import generic
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout
 from django.core.paginator import Paginator
-from django.db.models import Sum, Count
+from django.db.models import Sum, Count, F
 from .models import *
 from .forms import *
 from .filters import *
@@ -44,7 +44,8 @@ def register(request):
                 request, f'{username}, your account has been created. You can now use it to log in.')
             return redirect('login')
         else:
-            messages.error(request, 'The details you entered no not meet the minimum requirements')
+            # messages.error(request, 'The details you entered no not meet the minimum requirements')
+            messages.error(request, form.errors)
 
     else:
         form = UserRegistrationForm()
@@ -133,7 +134,7 @@ def home(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def products(request):
     products = Product.objects.all()
 
@@ -151,7 +152,7 @@ def products(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def stocks(request):
     stocks = Stock.objects.all()
 
@@ -169,7 +170,7 @@ def stocks(request):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
 
@@ -189,13 +190,11 @@ def customer(request, pk):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def LoanItemOut(request, pk):
     customer = Customer.objects.get(id=pk)
     form = LoanForm(initial={'customer': customer})
 
-    form.fields['customer'].disabled = True
-    form.fields['due_back'].widget = forms.SelectDateWidget()
     if request.method == 'POST':
         # print('Printing POST:', request.POST)
         form = LoanForm(request.POST)
@@ -208,7 +207,7 @@ def LoanItemOut(request, pk):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def updateCustomer(request, pk):
 
     customer = Customer.objects.get(id=pk)
@@ -225,7 +224,7 @@ def updateCustomer(request, pk):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def updateLoan(request, pk):
 
     loan = Loan.objects.get(id=pk)
@@ -234,7 +233,47 @@ def updateLoan(request, pk):
     form.fields['due_back'].widget = forms.SelectDateWidget()
     if request.method == 'POST':
         form = LoanForm(request.POST, instance=loan)
+        form.fields['customer'].disabled = True
+        form.fields['due_back'].widget = forms.SelectDateWidget()
         if form.is_valid():
+            if form.has_changed():
+
+                # product = Product.objects.filter(id=pk).select_related('product')
+                # product = Loan.objects.select_related('product').filter(id=pk)
+                # item = Loan.objects.get(id=pk)
+                q1 = Loan.objects.filter(id=pk).select_related('product')
+                # print(produc.product.quantity)
+                item = q1.get()
+                
+                # productq = product.get(name=product)
+                # productq = Product.objects.get(quantity__product=quantity)
+                # print(productq)
+                
+                if form.cleaned_data['status'] =='Returned':
+                    print(f'inside the if')
+                    item.product.quantity  += 1
+                    print(f'inner if')
+                else:item.product.quantity  -= 1
+                temp = item.product.quantity
+                print(temp, item.product.description)
+                print(f'end of outter if')
+                prodForm = ProductForm(request.POST,instance=item.product)
+                # prod = prodForm.save(commit=False)
+                print('__________')
+                # print(prodForm.cleaned_data)
+                prodForm.quantity = temp
+                if prodForm.is_valid():
+                    # prodForm.quantity = temp
+                    # print(prodForm.cleaned_data)
+                    print(prodForm)
+                    prodForm.save()
+                    print('__________')
+
+
+
+
+            print(item.product.quantity)
+
             form.save()
             return redirect('/')
 
@@ -243,7 +282,7 @@ def updateLoan(request, pk):
 
 
 @login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+@admin_only
 def deleteLoan(request, pk):
     loan = Loan.objects.get(id=pk)
     if request.method == "POST":
