@@ -20,3 +20,10 @@ class CustomerFilter(django_filters.FilterSet):
     class Meta:
         model = Customer
         fields = ['name']
+
+
+class StockFilter(django_filters.FilterSet):
+    class Meta:
+        model = Stock
+        fields = '__all__'
+        exclude = ['ordered_on', 'quantity']

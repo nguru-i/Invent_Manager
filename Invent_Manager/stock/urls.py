@@ -10,7 +10,9 @@ urlpatterns = [
     path('', views.home, name='stock-home'),
     path('user/', views.userPage, name="user-page"),
     path('products/', views.products, name='stock-products'),
+    path('stock/', views.stocks, name='stocks'),
     path('customer/<str:pk>/', views.customer, name="customer"),
+    path('customer/<str:pk>/', views.updateCustomer, name="updateCustomer"),
 
     path('create_loan/<str:pk>/', views.LoanItemOut, name="create_loan"),
     path('update_loan/<str:pk>/', views.updateLoan, name="update_loan"),

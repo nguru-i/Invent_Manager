@@ -11,7 +11,7 @@
 <div class="row">
 	<div class="col-md">
 		<div class="card card-body">
-			<h5>Products</h5>
+			<h5>Stock</h5>
 			<div class="row">
 				<div class="col">
 					<div class="card card-body">
@@ -30,16 +30,20 @@
 				<tr>
 
 					<th>Product</th>
-					<th>Category</th>
-					<th>Price</th>
+					<th>Supplier</th>
+					<th>Quantity</th>
+					<th>Stock last updated on</th>
+					<th>Item expected on</th>
 				</tr>
 
-				{% for product in page_obj %}
+				{% for stock in page_obj %}
 				<tr>
 
-					<td>{{product.name}}</td>
-					<td>{{product.category}}</td>
-					<td>{{product.price}}</td>
+					<td>{{stock.product.name}}</td>
+					<td>{{stock.supplier.name}}</td>
+					<td>{{stock.quantity}}</td>
+					<td>{{stock.last_update}}</td>
+					<td>{{stock.arrives_on}}</td>
 				</tr>
 				{% endfor %}
 

@@ -13,9 +13,9 @@
 			<form action="{% url 'delete_loan' item.id  %}" method="POST">
 
 				{% csrf_token %}
-				<a class="btn btn-warning" href="{% url 'stock-home' %}">Cancel</a>
+				<a class="btn btn-outline-warning" href="{% url 'stock-home' %}">Cancel</a>
 
-				<input class="btn btn-danger" type="submit" name="Confirm">
+				<input class="btn btn-outline-danger" type="submit" name="Confirm">
 			</form>
 		</div>
 	</div>

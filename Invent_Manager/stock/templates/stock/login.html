@@ -23,7 +23,7 @@
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Login">
             {% for message in messages %}
-    <p id="messages">{{message}}</p>
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
           </form>
       

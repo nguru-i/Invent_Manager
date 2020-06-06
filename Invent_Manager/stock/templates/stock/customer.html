@@ -10,7 +10,7 @@
 		<div class="card card-body">
 			<h5>Customer:</h5>
 			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_customer' customer.id %}">Update Customer</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'updateCustomer' customer.id %}">Update Customer</a>
 			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_loan' customer.id %}">Loan Item</a>
 
 		</div>
@@ -39,10 +39,10 @@
 <div class="row">
 	<div class="col">
 		<div class="card card-body">
-			<form method="get">
+			<form method="get" class="form-inline">
 				{{myFilter.form|crispy}}
 
-				<button class="btn btn-primary" type="submit">Search</button>
+				<button class="btn btn-outline-primary" type="submit">Search</button>
 			</form>
 		</div>
 	</div>

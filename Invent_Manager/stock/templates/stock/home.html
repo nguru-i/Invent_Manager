@@ -24,10 +24,10 @@
 		<div>
 			<div class="card card-body">
 
-				<form method="get">
-					{{myFilter.form.as_p}}
+				<form method="get" class="form-inline text-center">
+					{{myFilter.form|crispy}}
 
-					<button class="btn btn-primary" type="submit">Search</button>
+					<button class="btn btn-outline-primary" type="submit">Search</button>
 				</form>
 			</div>
 
@@ -50,7 +50,8 @@
 				{% for loan in loans %}
 				<tr>
 					<td>{{loan.product}}</td>
-					<td>{{loan.customer}}</td>
+					<td><a  href="{% url 'customer' loan.customer.id %}">{{loan.customer}}</a></td>
+					<!-- <td>{{loan.customer}}</td> -->
 					<td>{{loan.loaned_on}}</td>
 					<td>{{loan.status}}</td>
 					<td>{{ loan.due_back }}</td>
@@ -126,9 +127,8 @@
 		<div class="card card-body">
 
 			<div class="input-group mb-3">
-				<form method="get" class="form-control" placeholder="Recipient's username"
-					aria-label="Recipient's username" aria-describedby="button-addon2">
-					{{myCustFilter.form}}
+				<form method="get" class="form-inline text-center">
+					{{myCustFilter.form|crispy}}
 
 					<!-- <button class="btn btn-primary" type="submit">Search</button> -->
 					<div class="input-group-append">

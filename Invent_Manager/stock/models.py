@@ -59,7 +59,7 @@ class Stock(models.Model):
     arrives_on = models.DateField('item expected on', null=True, blank=True)
 
     def __str__(self):
-        return self.product_id.name
+        return self.product.name
 
     def was_stocked_recently(self):
         now = timezone.now()
@@ -70,7 +70,7 @@ class Stock(models.Model):
     was_stocked_recently.short_description = 'Stocked recently?'
 
     def __str__(self):
-        return f'{self.quantity} {self.product_id.name} from {self.supplier.name}'
+        return f'{self.quantity} {self.product.name} from {self.supplier.name}'
 
     def has_arrived(self):
         now = timezone.now()

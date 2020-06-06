@@ -20,7 +20,7 @@
         <input type="submit" class="fadeIn eighth" value="Sign up">
 
         {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 
       </form>

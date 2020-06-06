@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django import forms
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegistrationForm
 from django.contrib.auth.models import Group
@@ -21,10 +22,10 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         # initial_dict = { 
-        #         "username" : form.username, 
-        #         "first_name" : form.first_name, 
-        #         "last_name":form.last_name, 
-        #         "email":form.email
+        #         "username" : request.POST.username, 
+        #         "first_name" : request.POST.first_name, 
+        #         "last_name":request.POST.last_name, 
+        #         "email":request.POST.email
         #     } 
         if form.is_valid():
             user = form.save()
@@ -39,17 +40,13 @@ def register(request):
                 email = email
             	)
 
-            
-
             messages.success(
                 request, f'{username}, your account has been created. You can now use it to log in.')
             return redirect('login')
         else:
             messages.error(request, 'The details you entered no not meet the minimum requirements')
 
-
     else:
-
         form = UserRegistrationForm()
     return render(request, 'stock/register.html', {'form': form})
 
@@ -73,10 +70,12 @@ def loginPage(request):
     context = {}
     return render(request, 'stock/login.html', context)
 
+
 @login_required
 def logoutPage(request):
 	logout(request)
 	return redirect('login')
+
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['customer'])
@@ -153,6 +152,24 @@ def products(request):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
+def stocks(request):
+    stocks = Stock.objects.all()
+
+    myFilter = StockFilter(request.GET, queryset=stocks)
+    stocks = myFilter.qs
+
+    paginator = Paginator(stocks, 10)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {'stocks': stocks,
+               'myFilter': myFilter, 'page_obj': page_obj}
+    return render(request, 'stock/stocks.html', context)
+
+
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['admin'])
 def customer(request, pk):
     customer = Customer.objects.get(id=pk)
 
@@ -176,6 +193,9 @@ def customer(request, pk):
 def LoanItemOut(request, pk):
     customer = Customer.objects.get(id=pk)
     form = LoanForm(initial={'customer': customer})
+
+    form.fields['customer'].disabled = True
+    form.fields['due_back'].widget = forms.SelectDateWidget()
     if request.method == 'POST':
         # print('Printing POST:', request.POST)
         form = LoanForm(request.POST)
@@ -210,7 +230,8 @@ def updateLoan(request, pk):
 
     loan = Loan.objects.get(id=pk)
     form = LoanForm(instance=loan)
-
+    form.fields['customer'].disabled = True
+    form.fields['due_back'].widget = forms.SelectDateWidget()
     if request.method == 'POST':
         form = LoanForm(request.POST, instance=loan)
         if form.is_valid():
