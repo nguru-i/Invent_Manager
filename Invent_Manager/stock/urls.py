@@ -10,7 +10,7 @@ urlpatterns = [
     path('', views.home, name='stock-home'),
     path('user/', views.userPage, name="user-page"),
     path('products/', views.products, name='stock-products'),
-    path('stock/', views.stocks, name='stocks'),
+    # path('stock/', views.stocks, name='stocks'),
     path('customer/<str:pk>/', views.customer, name="customer"),
     path('customer/<str:pk>/', views.updateCustomer, name="updateCustomer"),
 

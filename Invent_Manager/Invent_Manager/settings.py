@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'el_pagination',
     'stock.apps.StockConfig',
     'django_filters',
+    'report_builder',
+    'coverage',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,6 +65,8 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.static',
+                'django.template.context_processors.media',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
