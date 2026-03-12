@@ -34,9 +34,8 @@ INSTALLED_APPS = [
     'el_pagination',
     'stock.apps.StockConfig',
     'django_filters',
-    'report_builder',
-    'coverage',
     'crispy_forms',
+    'crispy_bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,6 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'stock-home'
 
